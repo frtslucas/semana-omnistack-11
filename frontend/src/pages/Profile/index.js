@@ -11,6 +11,10 @@ export default function Profile() {
     const ongName = localStorage.getItem('ongName')
     const history = useHistory()
 
+    if (!ongId) {
+        history.push('/logon')
+    }
+
     useEffect(() => {
         api.get('/profile', {
             headers: {
@@ -37,7 +41,7 @@ export default function Profile() {
 
     function handleLogout() {
         localStorage.clear()
-        history.push('/')
+        history.push('/logon')
     }
 
     return (
