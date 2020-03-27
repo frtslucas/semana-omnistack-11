@@ -7,9 +7,12 @@ const IncidentController = require('./controllers/IncidentController')
 const ProfileController = require('./controllers/ProfileController')
 const SessionController = require('./controllers/SessionController')
 
-routes.post('/sessions', celebrate({
+routes.post('/register', celebrate({
     [Segments.BODY]: Joi.object().keys({
-        id: Joi.string().required().length(8)
+        firstName: Joi.string().required(),
+        lastName: Joi.string().required(),
+        email: Joi.string().required().email(),
+        password: Joi.string().required(),
     })
 }), SessionController.create)
 

@@ -1,8 +1,6 @@
-const knex = require('knex')
-const configuration = require('../../knexfile')
+const mongoose = require('mongoose');
 
-const config = process.env.NODE_ENV === 'test' ? configuration.test : configuration.development
+mongoose.connect('mongodb://localhost:27017/bethehero', { useMongoClient: true });
+mongoose.Promise = global.Promise;
 
-const connection = knex(config)
-
-module.exports = connection
+module.exports = mongoose;
